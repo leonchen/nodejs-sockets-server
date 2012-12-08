@@ -1,0 +1,7 @@
+module.exports = {
+  server: "127.0.0.1",
+  remote: 8080,
+  local: 8088, 
+  user: "",
+  secret: ""
+}
