@@ -45,6 +45,6 @@ var showStats = function (interval) {
     sout = (sockets.outBytes - tout) / (interval / 1000);
     tin = sockets.inBytes;
     tout = sockets.outBytes; 
-    process.stdout.write("\033[K\rClient is running [\033[32mReceived\033[m: "+utils.humanBytes(tin)+" via "+utils.humanBytes(sin)+"\/s] [\033[31mSent\033[m: "+utils.humanBytes(tout)+" via "+utils.humanBytes(sout)+"\/s]");
+    process.stdout.write("\033[K\rClient is running [\033[32mReceived\033[m: "+utils.humanBytes(tin)+" via "+utils.humanBytes(sin)+"\/s] [\033[31mSent\033[m: "+utils.humanBytes(tout)+" via "+utils.humanBytes(sout)+"\/s]\033[K");
   }, interval);
 }
