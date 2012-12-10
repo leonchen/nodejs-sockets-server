@@ -1,5 +1,5 @@
 module.exports = {
   listen: 8080,
-  connect: 80,
+  connectPort: 80,
   portsRange: [10000, 65535]
 };
