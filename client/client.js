@@ -19,7 +19,6 @@ var req = http.request(options, function (res) {
   });
   res.on('end', function () {
     start(data);
-    console.log("connected to server port:"+data);
   });
 });
 
@@ -31,7 +30,7 @@ req.write("user="+config.user+"&pass="+config.secret);
 req.end();
 
 var start = function (port) {
-  var server = sockets.createTCPServer(config.listen, parseInt(port), config.serverHost);
+  var server = sockets.createTCPForwardServer(config.listen, parseInt(port), config.serverHost);
   showStats(statsInterval);
 };
 
@@ -45,6 +44,6 @@ var showStats = function (interval) {
     sout = (sockets.outBytes - tout) / (interval / 1000);
     tin = sockets.inBytes;
     tout = sockets.outBytes; 
-    process.stdout.write("\033[K\rClient is running [\033[32mReceived\033[m: "+utils.humanBytes(tin)+" via "+utils.humanBytes(sin)+"\/s] [\033[31mSent\033[m: "+utils.humanBytes(tout)+" via "+utils.humanBytes(sout)+"\/s]\033[K");
+    process.stdout.write("\033[K\r\033[36mRunning\033[m [ Received: \033[32m"+utils.humanBytes(tin)+"\033[m  \033[32m"+utils.humanBytes(sin)+"\/s\033[m ] [ Sent: \033[31m"+utils.humanBytes(tout)+"\033[m  \033[31m"+utils.humanBytes(sout)+"\/s\033[m ]\033[K");
   }, interval);
 }
